@@ -1,0 +1,16 @@
+.like-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+}
+
+.like {
+    border: none;
+    background: none;
+    color: black;
+    transform: scale(2.3);
+    cursor: pointer;
+}
+.likes-number {
+    color: black;
+}
