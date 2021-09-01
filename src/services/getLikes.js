@@ -3,6 +3,7 @@ async function getLikes({ id }) {
         .then((res) => res.json())
         .then((response) => {
             const { data } = response;
+            console.log('likes', data);
             const likes = data.map((like) => {
                 const {
                     id,

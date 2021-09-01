@@ -34,10 +34,11 @@ function AvatarTrendings() {
         <a href={`/perfil/${avatar.id}`} className="links-profiles">
             <img
                 className="trendings-profile-photos"
+                alt="trendings"
                 src={
                     avatar.fotoperfil === null
                         ? imagennoperfil
-                        : avatar.fotoperfil
+                        : `http://localhost:4000/uploads/${avatar.fotoperfil}`
                 }
             ></img>
             <p>{avatar.nickname}</p>

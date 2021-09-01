@@ -10,7 +10,6 @@ import ListOfImages from '../../components/listofimages/ListofImages';
 import Menu from '../../components/menu/menu';
 import getComment from '../../services/getComment';
 
-
 function PhotoWall() {
     const { id } = useParams();
     const keyword = id;
@@ -65,30 +64,31 @@ function PhotoWall() {
         [keyword, step]
     );
 
-
-
     return (
         <div>
             <Menu />
             <div className="grid_photowall">
                 <ListOfImages keyword={keyword} />
                 <ListOfComments search={search} />
-                <form onSubmit={onSubmitComments} className="imagesWall_comments_new">
-                        <textarea
-                            className="textarea-comments"
-                            type='text'
-                            placeholder='Aquí podrás comentar las fotos que más te gusten'
-                            value={comentario}
-                         onChange={(event) => setComments(event.target.value)}
-                        ></textarea>
-                        <button 
-                         className="comment-button"
-                            type='submit'
-                            onClick={() => setAddComment(!addComment)}
-                            disabled={comentario ? '' : 'comments'}
-                        >
+                <form
+                    onSubmit={onSubmitComments}
+                    className="imagesWall_comments_new"
+                >
+                    <textarea
+                        className="textarea-comments"
+                        type="text"
+                        placeholder="Aquí podrás comentar las fotos que más te gusten"
+                        value={comentario}
+                        onChange={(event) => setComments(event.target.value)}
+                    ></textarea>
+                    <button
+                        className="comment-button"
+                        type="submit"
+                        onClick={() => setAddComment(!addComment)}
+                        disabled={comentario ? '' : 'comments'}
+                    >
                         <IoIosSend />
-                        </button>
+                    </button>
                 </form>
             </div>
         </div>
