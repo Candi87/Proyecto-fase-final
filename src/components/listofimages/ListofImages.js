@@ -50,7 +50,7 @@ export default function ListOfImages({ keyword = '' }) {
             <Image url={singleImage.url} />
             <div className="photoinfo">
                 <p>{userInfo.nickname}</p>
-                <p>{singleImage.descripcion}</p>
+                <p>{singleImage.descripcion ? '' : singleImage.descripcion}</p>
                 <Like />
             </div>
         </div>

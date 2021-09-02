@@ -18,9 +18,7 @@ function Comments({ id, idImagen, fechaCreacion, comentario, idUsuario }) {
                 },
             });
             setUserCommentInfo(response.data.informacion);
-        } catch (error) {
-            console.log('error: ', error);
-        }
+        } catch (error) {}
     }
 
     useEffect(
@@ -31,22 +29,20 @@ function Comments({ id, idImagen, fechaCreacion, comentario, idUsuario }) {
 
         [, id]
     );
-    console.log('user log comment : ', userCommentInfo);
 
     return (
         <section key={id} className="comments">
             <div className="userinfoavatar">
-                <img
-                    src={
-                        userCommentInfo.fotoperfil ===
-                        'http://localhost:4000/uploads/null'
-                            ? imagennoperfil
-                            : userCommentInfo.fotoperfil
-                    }
-                    alt=""
-                    className="miniavatar"
-                ></img>
                 <a href={`/perfil/${idUsuario}`} className="comments_username">
+                    <img
+                        src={
+                            userCommentInfo.fotoperfil === null
+                                ? imagennoperfil
+                                : `http://localhost:4000/uploads/${userCommentInfo.fotoperfil}`
+                        }
+                        alt=""
+                        className="miniavatar"
+                    ></img>
                     {userCommentInfo.nickname}
                 </a>
             </div>

@@ -16,7 +16,6 @@ function AvatarTrendings() {
         const data = await response.json();
         const fotoperfil = data.usuario;
         const arrayAvatar = [];
-        console.log('fotoperfil', fotoperfil);
 
         for (let i = 0; i < fotoperfil.length; i++) {
             const profilePhoto = data.usuario[i];
@@ -24,7 +23,6 @@ function AvatarTrendings() {
             arrayAvatar.push(profilePhoto);
         }
         setShowAvatar(arrayAvatar);
-        console.log('arrayAvatar', arrayAvatar);
     }
     useEffect(() => {
         takePhoto();

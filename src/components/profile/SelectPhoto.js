@@ -22,8 +22,6 @@ function SelectPhoto() {
 
         fotoperfil = response.json();
         setFotoPerfil();
-
-        console.log('imagen perfil', fotoperfil);
     }
 
     imageProfile();

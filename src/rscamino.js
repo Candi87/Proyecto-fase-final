@@ -104,8 +104,6 @@ class ErrorBoundary extends React.Component {
 
     componentDidCatch(error, errorInfo) {
         // También puedes ejecutar codigo  cuando hay un error
-
-        console.log('ERROR: ', error);
     }
 
     render() {

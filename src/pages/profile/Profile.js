@@ -87,7 +87,7 @@ function Profile() {
                             />
 
                             {idUsuario === idLogin ? (
-                                <form>
+                                <form className="avatar-button">
                                     <label for="avatar">
                                         <MdAddAPhoto />
                                     </label>
@@ -116,26 +116,5 @@ function Profile() {
             )}
         </div>
     );
-
-    /*  if (idLogin === idUsuario) {
-        
-    } else {
-        return (
-            <div>
-                <Menu />
-                <div className="user-info-container">
-                    <GetAvatarPhoto
-                        className="photo-profile"
-                        alt="fotos-profile"
-                    />
-
-                    <ShowNickname className={'email-user email'} />
-                </div>
-                <div className="listofimages-profile">
-                    <ListOfUserPhotos keyword={keyword} />
-                </div>
-            </div>
-        );
-    } */
 }
 export default Profile;

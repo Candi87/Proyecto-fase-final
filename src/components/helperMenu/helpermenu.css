@@ -34,8 +34,8 @@ a {
 }
 
 .btn-group {
-    text-align: center;
-    margin-left: 1000px;
+    position: relative;
+    left: 950px;
 }
 
 .open-modal {

@@ -12,7 +12,6 @@ async function getComment({ keyword }) {
             if (keyword) {
                 let newImages = images.filter((image) => {
                     if (image.idImagen === Number(keyword)) {
-                        console.log('Image :', image);
                         return image;
                     }
                 });

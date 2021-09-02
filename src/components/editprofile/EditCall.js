@@ -10,7 +10,7 @@ function EditCall() {
     const idUsuario = sessionStorage.getItem('idusuario');
     const tokenInfo = sessionStorage.getItem('token');
     const [userInfo, setUserInfo] = useState();
-    console.log('userInfo: ', userInfo);
+
     // Solicitud GET USERINFO
     if (!userInfo) {
         async function getUserInfo() {
@@ -24,9 +24,7 @@ function EditCall() {
                     },
                 });
                 setUserInfo(response.data.informacion);
-            } catch (error) {
-                console.log('error: ', error);
-            }
+            } catch (error) {}
         }
         getUserInfo();
     }
@@ -36,7 +34,6 @@ function EditCall() {
     const [email, setEmail] = useState();
     const [oldPassword, setOldPassword] = useState();
     const [newPassword, setNewPassword] = useState();
-    console.log('userInfo del Editcall: ', userInfo);
 
     function onSelectEmail(event) {
         const email = event.target.value;

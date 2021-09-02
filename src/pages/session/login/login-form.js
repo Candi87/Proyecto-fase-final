@@ -37,7 +37,6 @@ function Login() {
                 sessionStorage.setItem('token', data.data.token);
                 sessionStorage.setItem('nickname', data.data.nickname);
 
-                console.log(idUsuario);
                 history.push(`/tendencias`);
             }
         }

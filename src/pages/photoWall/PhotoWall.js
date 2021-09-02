@@ -25,7 +25,6 @@ function PhotoWall() {
     function onSubmitComments(event) {
         event.preventDefault();
 
-        console.log('STEEEEEEEEEEEEEEEEEEEEEEEP:    ', step);
         async function performComment() {
             const response = await fetch(
                 `http://localhost:4000/usuarios/${idUsuario}/photos/${id}/comment`,

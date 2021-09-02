@@ -20,7 +20,6 @@ const UploadImage = ({ handleClose }) => {
     const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 16 / 9 });
     const [completedCrop, setCompletedCrop] = useState(null);
     const [percentCrop, setPercentCrop] = useState(null);
-    console.log('movidillas', percentCrop);
 
     const onSelectFile = (event) => {
         if (event.target.files && event.target.files.length > 0) {
@@ -38,7 +37,6 @@ const UploadImage = ({ handleClose }) => {
     async function uploadFile(event) {
         event.preventDefault();
         if (!crop) {
-            console.log('no hay crop');
         } else {
             try {
                 const data = new FormData();
@@ -56,8 +54,6 @@ const UploadImage = ({ handleClose }) => {
                         },
                     }
                 );
-
-                console.log(await response.json());
             } catch (error) {
                 setError('Error subiendo el fichero');
             }

@@ -10,14 +10,12 @@ async function getImage({ keyword }) {
             if (keyword) {
                 let newImages = images.filter((image) => {
                     if (image.id === Number(keyword)) {
-                        console.log('Image :', image);
                         return image;
                     }
                 });
-                console.log('NewImages: ', newImages);
+
                 return newImages;
             } else {
-                console.log('else images: ', images);
                 return images;
             }
         });

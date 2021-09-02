@@ -4,7 +4,6 @@ import getResults from '../../services/getResults';
 
 function ListOfResults({ keyword = '' }) {
     const [search, setSearch] = useState([]);
-    console.log(keyword);
 
     useEffect(
         function () {

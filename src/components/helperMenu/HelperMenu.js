@@ -2,7 +2,7 @@ import './helpermenu.css';
 import { MdAddAPhoto } from 'react-icons/md';
 import { GoGear } from 'react-icons/go';
 import UploadImage from '../uploadimage/UploadImage';
-import EditCall from '../editprofile/EditCall';
+import EditProfile from '../editprofile/EditProfile';
 import React, { useState } from 'react';
 import axios from 'axios';
 export default function HelperMenu(props) {
@@ -58,9 +58,7 @@ export default function HelperMenu(props) {
                     },
                 });
                 setUserInfo(response.data.informacion);
-            } catch (error) {
-                console.log('error: ', error);
-            }
+            } catch (error) {}
         }
         getUserInfo();
     }
@@ -72,6 +70,7 @@ export default function HelperMenu(props) {
                 data-open="uploadimage"
             >
                 <MdAddAPhoto />
+                <p>Subir imagen</p>
             </button>
             <button
                 type="button"
@@ -79,6 +78,7 @@ export default function HelperMenu(props) {
                 data-open="editprofile"
             >
                 <GoGear />
+                <p>Opciones de perfil</p>
             </button>
 
             <div className="modal" id="editprofile">
@@ -94,7 +94,7 @@ export default function HelperMenu(props) {
                         </button>
                     </header>
                     <section className="modal-content">
-                        <EditCall />
+                        <EditProfile />
                     </section>
                 </div>
             </div>
