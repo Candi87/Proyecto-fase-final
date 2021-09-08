@@ -13,22 +13,20 @@
 .textarea-comments:focus {
     outline: none;
 }
-
+.photowall {
+    background-color: black;
+    height: 100vh;
+}
 .comment-button {
     border: none;
     cursor: pointer;
     width: 20%;
 }
-
-.grid_photowall {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 3fr 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    max-height: 0vh;
-    margin: 50px 100px 50px 100px;
-    grid-auto-flow: row;
+.comment-button:hover {
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    background-color: green;
 }
 
 .imagesWall_parent {
@@ -36,13 +34,99 @@
 }
 .singlecomment {
     grid-area: 1 / 2 / 2 / 3;
+    flex-shrink: 10;
+    flex-grow: 10;
+    padding-top: 16px;
 }
 .imagesWall_comments_new {
     grid-area: 2 / 2 / 3 / 3;
     width: 100%;
     display: flex;
+    border-top: 1px solid black;
 }
+.grid_photowall {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    margin: 30px 20px 10px 20px;
+    grid-row-gap: 0px;
+}
+.imagesWall img {
+    max-height: 750px;
+}
+.imagesWall_parent {
+    grid-area: 1 / 1 / 2 / 2;
+}
+.asidephoto {
+    grid-area: 1 / 2 / 2 / 3;
+    max-height: 750px;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid black;
+}
+.menuhidden-notlogged {
+    justify-content: space-evenly;
+}
+.menuhidden-logged {
+    justify-content: space-between;
+}
+.singlecomment h1 {
+    margin-top: 200px;
+    vertical-align: center;
+    color: black;
+    text-align: center;
+    margin-left: 0px;
+    padding: 0px 16px 0px 16px;
+}
+
 .photoinfo {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 16px 0px 16px 0px;
+    border-bottom: 1px solid black;
+}
+.avatarinfo {
+    display: flex;
+    font-weight: 900;
+}
+.avatar-description {
+    font-style: oblique;
+    padding: 8px;
+}
+.like-container {
+    padding-right: 16px;
+}
+.menuhidden {
+    background-color: black;
+    position: relative;
+    top: 0%;
+    height: 100px;
+    display: flex;
+    margin: 0px 32px 4px 32px;
+    vertical-align: center;
+    align-items: center;
+    color: white;
+}
+.menuhidden svg {
+    width: 50px;
+    height: 50px;
+    color: grey;
+    vertical-align: center;
+}
+.menuhidden_button:hover svg {
+    color: #f9f9f9;
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+    transition-delay: 0s;
+}
+.menuhidden_button {
+    margin-top: 30px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: grey;
 }

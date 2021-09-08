@@ -11,7 +11,10 @@ async function getComment({ keyword }) {
             });
             if (keyword) {
                 let newImages = images.filter((image) => {
-                    if (image.idImagen === Number(keyword)) {
+                    if (
+                        image.idImagen === Number(keyword) &&
+                        image.comentario !== null
+                    ) {
                         return image;
                     }
                 });

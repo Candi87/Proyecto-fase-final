@@ -33,6 +33,7 @@ function ResetUsuarioPass() {
             );
 
             const data = await response.json();
+
             if (!response.ok) {
                 setError(data.message);
                 return;
@@ -45,11 +46,11 @@ function ResetUsuarioPass() {
     }
 
     return (
-        <div className='main_page_land'>
-            <div className='main_page_screens'></div>
-            <div className='main_page_access'>
-                <div className='main_page_access_titles'>
-                    <h1 className='title_1'>Actualiza la contraseña aquí</h1>
+        <div className="main_page_land">
+            <div className="main_page_screens"></div>
+            <div className="main_page_access">
+                <div className="main_page_access_titles">
+                    <h1 className="title_1">Actualiza la contraseña aquí</h1>
                 </div>
                 <form onSubmit={onSubmitResetUsuarioPass}>
                     <label>
@@ -58,8 +59,8 @@ function ResetUsuarioPass() {
                             onChange={(event) =>
                                 setRecoverCode(event.target.value)
                             }
-                            type='password'
-                            placeholder='Código de recuperación'
+                            type="password"
+                            placeholder="Código de recuperación"
                         ></input>
                     </label>
                     <label>
@@ -68,8 +69,8 @@ function ResetUsuarioPass() {
                             onChange={(event) =>
                                 setNewPasswor(event.target.value)
                             }
-                            type='password'
-                            placeholder='Introduce la contraseña nueva'
+                            type="password"
+                            placeholder="Introduce la contraseña nueva"
                         ></input>
                     </label>
                     <label>
@@ -78,12 +79,12 @@ function ResetUsuarioPass() {
                             onChange={(event) =>
                                 setRepeatPassWord(event.target.value)
                             }
-                            type='password'
-                            placeholder='Repite la nueva contraseña'
+                            type="password"
+                            placeholder="Repite la nueva contraseña"
                         ></input>
 
-                        <button type='submit'>Actualizar</button>
-                        {error && <div className='error-label'>{error} </div>}
+                        <button type="submit">Actualizar</button>
+                        {error && <div className="error-label">{error} </div>}
                     </label>
                 </form>
             </div>

@@ -41,37 +41,39 @@ function ResetPassword() {
         setError('');
     }
     return (
-        <div className='main_page_land'>
-            <div className='main_page_screens'></div>
-            <div className='main_page_access'>
-                <div className='main_page_access_titles'>
-                    <h1 className='title_1'>Recupera tu contraseña</h1>
+        <div className="main_page_land">
+            <div className="main_page_screens"></div>
+            <div className="main_page_access">
+                <div className="main_page_access_titles">
+                    <h1 className="title_1">Recupera tu contraseña</h1>
                 </div>
-                <div className='register-form'>
+                <div className="register-form">
                     <form onSubmit={onSubmitResetPassword} className="form">
                         <label>
                             Para recuperar la contraseña introduce el email:
                             <input
-                            className="input"
+                                className="input"
                                 value={email}
                                 onChange={(event) =>
                                     setEmail(event.target.value)
                                 }
-                                type='text'
-                                placeholder='email'
+                                type="text"
+                                placeholder="email"
+                                pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                                required
                             ></input>
                             {error && (
-                                <div className='error-label'>{error}</div>
+                                <div className="error-label">{error}</div>
                             )}
                         </label>
                         <button
-                            className='button-forms'
-                            type='submit'
-                            value='Enviar'
+                            className="button-forms"
+                            type="submit"
+                            value="Enviar"
                         >
                             Enviar
                         </button>
-                        <Link to='/login' className='links'>
+                        <Link to="/login" className="links">
                             <p>Ya tengo cuenta</p>
                         </Link>
                     </form>
@@ -83,6 +85,6 @@ function ResetPassword() {
 export default ResetPassword;
 function validateResetPassword(email) {
     if (!email) {
-        return 'introduce el email si quires cambiar la contraseña atontao';
+        return 'Introduce el correo con el que te has registrado si quires cambiar la contraseña';
     }
 }

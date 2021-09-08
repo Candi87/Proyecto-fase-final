@@ -29,10 +29,6 @@ const UploadImage = ({ handleClose }) => {
             reader.readAsDataURL(event.target.files[0]);
         }
     };
-    function onSelectDescription(event) {
-        const description = event.target.value;
-        setDescription(description);
-    }
 
     async function uploadFile(event) {
         event.preventDefault();
@@ -109,11 +105,11 @@ const UploadImage = ({ handleClose }) => {
             />
 
             <label for="description" className="uploadimage_description">
-                Descripción:
+                <p>Escribe aquí la descripción</p>
                 <input
                     type="text"
                     className="uploadimage_description_input"
-                    onChange={onSelectDescription}
+                    onChange={(event) => setDescription(event.target.value)}
                 />
             </label>
             {error && (
@@ -146,12 +142,14 @@ const UploadImage = ({ handleClose }) => {
                     id="canvas"
                 />
             </div>
-
-            <input
-                className="uploadimage_button_send"
-                type="submit"
-                value="Subir"
-            />
+            <div className="btn-subir">
+                <input
+                    className="uploadimage_button_send"
+                    type="submit"
+                    value="Subir"
+                    onClick={handleClose}
+                />
+            </div>
         </form>
     );
 };

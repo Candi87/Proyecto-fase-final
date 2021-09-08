@@ -5,10 +5,9 @@
     font-size: 12px;
 }
 .singlecomment {
-    background-color: #f9f9f9;
     max-width: 500px;
-    height: 690px;
     overflow: auto;
+    background-color: #ffffff;
 }
 .imagesWall_comments_new {
     width: 100%;

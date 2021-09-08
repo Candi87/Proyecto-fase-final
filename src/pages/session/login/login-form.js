@@ -32,10 +32,8 @@ function Login() {
             if (!response.ok) {
                 setError(data.message);
             } else {
-                const idUsuario = data.data.idUsuario;
                 sessionStorage.setItem('idusuario', data.data.idUsuario);
                 sessionStorage.setItem('token', data.data.token);
-                sessionStorage.setItem('nickname', data.data.nickname);
 
                 history.push(`/tendencias`);
             }
@@ -62,6 +60,8 @@ function Login() {
                                     setEmail(event.target.value)
                                 }
                                 placeholder="email"
+                                pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                                required
                             />
                         </label>
                         <label className="datos-container">
@@ -73,6 +73,8 @@ function Login() {
                                     setPassword(event.target.value)
                                 }
                                 placeholder="contraseña"
+                                pattern="[A-Za-z0-9!?-]{6,12}"
+                                required
                             />
                             {error && (
                                 <div className="error-label">{error}</div>

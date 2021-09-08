@@ -3,6 +3,7 @@ import { MdAddAPhoto } from 'react-icons/md';
 import { GoGear } from 'react-icons/go';
 import UploadImage from '../uploadimage/UploadImage';
 import EditProfile from '../editprofile/EditProfile';
+import EditCall from '../editprofile/EditCall';
 import React, { useState } from 'react';
 import axios from 'axios';
 export default function HelperMenu(props) {
@@ -63,7 +64,7 @@ export default function HelperMenu(props) {
         getUserInfo();
     }
     return (
-        <div className="btn-group">
+        <div className="btn-group-options">
             <button
                 type="button"
                 className="open-modal"
@@ -94,7 +95,7 @@ export default function HelperMenu(props) {
                         </button>
                     </header>
                     <section className="modal-content">
-                        <EditProfile />
+                        <EditCall />
                     </section>
                 </div>
             </div>

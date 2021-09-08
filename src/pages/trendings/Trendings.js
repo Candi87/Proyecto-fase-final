@@ -2,6 +2,7 @@
 import Menu from '../../components/menu/menu';
 import ListOfResults from '../../components/listofresults/ListOfResults';
 import Carrousel from '../../components/carrousel/carrousel';
+import '../search/search.css';
 export default function Trendings() {
     const keyword = '';
 

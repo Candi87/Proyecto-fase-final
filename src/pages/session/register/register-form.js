@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../session.css';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function RegisterForm() {
     const [name, setName] = useState('');
@@ -9,10 +9,17 @@ function RegisterForm() {
     const [repeatPassword, setRepeatPassword] = useState('');
     const [nickname, setNickName] = useState('');
     const [confirmEmail, setConfirmEmail] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
 
     function onSubmitRegister(event) {
         event.preventDefault();
+
+        const error = validatePassword(password, repeatPassword);
+
+        if (error) {
+            setError(error);
+            return;
+        }
 
         async function registerConfirm() {
             const response = await fetch('http://localhost:4000/usuarios/', {
@@ -29,8 +36,10 @@ function RegisterForm() {
             });
 
             const data = await response.json();
+            console.log(data);
             if (!response.ok) {
                 setError(data.message);
+                setConfirmEmail('');
                 return;
             } else {
                 setConfirmEmail(
@@ -46,34 +55,35 @@ function RegisterForm() {
             <div className="main_page_screens"></div>
             <div className="main_page_access">
                 <div className="main_page_access_titles">
-                    <h1 className="title_1">¡ Regístrate ya !</h1>
+                    <h1 className="title_1">Disfruta con nosotros el Camino</h1>
                 </div>
                 <div className="register-form">
                     <form onSubmit={onSubmitRegister} className="form">
                         <label className="datos-container">
-                            <label className="datos-container">
-                                <input
-                                    className="input"
-                                    value={name}
-                                    onChange={(event) =>
-                                        setName(event.target.value)
-                                    }
-                                    type="text"
-                                    placeholder="Ingrese su Nombre y Apellidos"
-                                    leyendaError="El usuario tiene que ser min de 4 a 30 gígitos y sólo puede contener letras"
-                                />
-                                <error>Rellene este campo</error>
-                            </label>
+                            <input
+                                className="input"
+                                value={name}
+                                onChange={(event) =>
+                                    setName(event.target.value)
+                                }
+                                type="text"
+                                placeholder="Ingrese su Nombre y Apellidos"
+                                pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,48}"
+                                required
+                            />
+                        </label>
+                        <label className="datos-container">
                             <input
                                 className="input"
                                 value={email}
                                 onChange={(event) =>
                                     setEmail(event.target.value)
                                 }
-                                type="text"
+                                type="email"
                                 placeholder="Ingrese su email"
+                                pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                                required
                             />
-                            <error>Error</error>
                         </label>
                         <label className="datos-container">
                             <input
@@ -84,8 +94,9 @@ function RegisterForm() {
                                 }
                                 type="text"
                                 placeholder="Ingrese el Nombre de Usuario"
+                                pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'- 0-9]{2,48}"
+                                required
                             />
-                            <error>Error</error>
                         </label>
                         <label className="datos-container">
                             <input
@@ -96,8 +107,10 @@ function RegisterForm() {
                                 }
                                 type="password"
                                 placeholder="Ingrese su Contraseña"
+                                pattern="[A-Za-z0-9!?-]{6,12}"
+                                required
                             />
-                            <error>Error</error>
+
                             <label className="datos-container">
                                 <input
                                     className="input"
@@ -107,8 +120,9 @@ function RegisterForm() {
                                     }
                                     type="password"
                                     placeholder="Repita su Contraseña"
+                                    pattern="[A-Za-z0-9!?-]{6,12}"
+                                    required
                                 />
-                                <error>Error</error>
                             </label>
                             <div>
                                 <p className="pterminos">
@@ -123,12 +137,6 @@ function RegisterForm() {
                                 <p>Ya tengo cuenta</p>
                             </Link>
 
-                            {false && (
-                                <div>
-                                    <b> Error :</b> Por favor rellena el
-                                    formulario correctamente
-                                </div>
-                            )}
                             {confirmEmail && <div>{confirmEmail} </div>}
                             <p>{error}</p>
                         </label>
@@ -139,3 +147,11 @@ function RegisterForm() {
     );
 }
 export default RegisterForm;
+
+function validatePassword(password, repeatPassword) {
+    const isValidPassword = password === repeatPassword;
+
+    if (!isValidPassword) {
+        return 'Las contraseñas deben coincidir';
+    }
+}

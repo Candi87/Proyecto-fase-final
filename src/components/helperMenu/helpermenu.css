@@ -33,7 +33,7 @@ a {
     border: 1px solid black;
 }
 
-.btn-group {
+.btn-group-options {
     position: relative;
     left: 950px;
 }
@@ -130,4 +130,14 @@ a {
 
 .modal p + p {
     margin-top: 1rem;
+}
+.close-modal {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+}
+.tittle-edit-profile {
+    text-align: center;
 }

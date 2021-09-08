@@ -35,10 +35,9 @@ function Comments({ id, idImagen, fechaCreacion, comentario, idUsuario }) {
             <div className="userinfoavatar">
                 <img
                     src={
-                        userCommentInfo.fotoperfil ===
-                        'http://localhost:4000/uploads/null'
+                        userCommentInfo.fotoperfil === null
                             ? imagennoperfil
-                            : userCommentInfo.fotoperfil
+                            : `http://localhost:4000/uploads/${userCommentInfo.fotoperfil}`
                     }
                     alt=""
                     className="miniavatar"

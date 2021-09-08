@@ -31,23 +31,23 @@ function Comments({ id, idImagen, fechaCreacion, comentario, idUsuario }) {
     );
 
     return (
-        <section key={id} className="comments">
-            <div className="userinfoavatar">
-                <a href={`/perfil/${idUsuario}`} className="comments_username">
+        <section key={id} className='comments'>
+            <div className='userinfoavatar'>
+                <a href={`/perfil/${idUsuario}`} className='comments_username'>
                     <img
                         src={
                             userCommentInfo.fotoperfil === null
                                 ? imagennoperfil
                                 : `http://localhost:4000/uploads/${userCommentInfo.fotoperfil}`
                         }
-                        alt=""
-                        className="miniavatar"
+                        alt=''
+                        className='miniavatar'
                     ></img>
                     {userCommentInfo.nickname}
                 </a>
             </div>
-            <p className="comments_comment">{comentario}</p>
-            <p className="comments_date">{fechaCreacion}</p>
+            <p className='comments_comment'>{comentario}</p>
+            <p className='comments_date'>{fechaCreacion}</p>
         </section>
     );
 }

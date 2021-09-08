@@ -23,7 +23,9 @@ function Menu() {
                             className="icono-opciones"
                             onClick={showSidebar}
                         />
-                        <p className="btn-letter">MENÚ</p>
+                        <p onClick={showSidebar} className="btn-letter">
+                            MENÚ
+                        </p>
                     </Link>
 
                     <h1>A GUÍA DO CAMIÑO</h1>
@@ -35,7 +37,7 @@ function Menu() {
                         <li className="navbar-toggle">
                             <Link to="#" className="menu-bars">
                                 <RiMenuFoldFill className="icono-cerrar" />
-                                <p className="btn-letter">CERRAR MENÚ</p>
+                                <p className="btn-letter2">CERRAR MENÚ</p>
                             </Link>
                         </li>
                         {SidebarDataLogged.map((item, index) => {
@@ -69,7 +71,10 @@ function Menu() {
                     <ul className="nav-menu-items" onClick={showSidebar}>
                         <li className="navbar-toggle">
                             <Link to="#" className="menu-bars">
-                                <RiMenuFoldFill className="icono-cerrar" />
+                                <RiMenuFoldFill
+                                    onClick={showSidebar}
+                                    className="icono-cerrar"
+                                />
                             </Link>
                         </li>
                         {SidebarData.map((item, index) => {

@@ -19,9 +19,9 @@ function AvatarTrendings() {
 
         for (let i = 0; i < fotoperfil.length; i++) {
             const profilePhoto = data.usuario[i];
-
             arrayAvatar.push(profilePhoto);
         }
+
         setShowAvatar(arrayAvatar);
     }
     useEffect(() => {

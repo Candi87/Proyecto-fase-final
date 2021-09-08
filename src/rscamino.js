@@ -1,6 +1,7 @@
 import './rscamino.css';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import RegisterForm from './pages/session/register/register-form';
 import Login from './pages/session/login/login-form';
 import ResetPassword from './pages/session/password/resetpassword/resetPassword';
@@ -11,18 +12,13 @@ import Trendings from './pages/trendings/Trendings';
 import Search from './pages/search/Search';
 import PhotoWall from './pages/photoWall/PhotoWall';
 import Profile from './pages/profile/Profile';
-// import LoguedMenu from './pages/loguedpague/loguedpage';
-
-// import Profile from './pages/profile/Profile';
-// sessionStorage.setItem('token', data.data.token);
-// import MenuNotLogued from './pages/notloguedpage/notloguedpage';
 
 // const Login = lazy(() => import('./pages/session/login/login-form'));
 // const RegisterForm = lazy(() =>
 //     import('./pages/session/register/register-form')
 // );
 // const ResetPassword = lazy(() =>
-//     import('./pages/session/password/resetpassword')
+//     import('./pages/session/password/resetpassword/resetPassword')
 // );
 // const ValidateUser = lazy(() =>
 //     import('./pages/session/validateuser/validate')
@@ -31,9 +27,9 @@ import Profile from './pages/profile/Profile';
 //     import('./pages/session/password/resetpassword/resetUsuarioPass')
 // );
 // const Home = lazy(() => import('./pages/home/Home'));
-// const Profile = lazy(() => import('./pages/profile/profile'));
-// const Search = lazy(() => import('./pages/search/search'));
-// const Trendings = lazy(() => import('./pages/trendings/trendings'));
+// const Profile = lazy(() => import('./pages/profile/Profile'));
+// const Search = lazy(() => import('./pages/search/Search'));
+// const Trendings = lazy(() => import('./pages/trendings/Trendings'));
 // const PhotoWall = lazy(() => import('./pages/photoWall/PhotoWall'));
 
 function Rscamino() {
@@ -43,7 +39,6 @@ function Rscamino() {
                 <div className="App">
                     <Switch>
                         {/* <Suspense fallback={<div>Cargando...</div>}> */}
-
                         <Route exact path={`/perfil/:idUsuario`}>
                             <Profile />
                         </Route>

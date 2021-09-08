@@ -1,7 +1,7 @@
 .like-container {
     display: flex;
     justify-content: flex-end;
-    margin-right: 40px;
+    gap: 20px;
 }
 
 .like {
@@ -10,6 +10,16 @@
     color: black;
     transform: scale(2.3);
     cursor: pointer;
+}
+.like-yes {
+    border: none;
+    background: none;
+    color: black;
+    transform: scale(2.3);
+    cursor: pointer;
+}
+.like-yes svg {
+    color: red;
 }
 .likes-number {
     color: black;

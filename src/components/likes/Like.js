@@ -10,6 +10,8 @@ function Like() {
 
     const [totalLikes, setTotalLikes] = useState(0);
     const [step, setStep] = useState(0);
+    const [prueba, setPrueba] = useState({});
+    const [liked, setLiked] = useState('');
 
     let { id } = useParams();
 
@@ -31,16 +33,31 @@ function Like() {
         function () {
             getLikes({ id }).then((results) => {
                 setTotalLikes(results.length);
+                setPrueba(results);
+                if (results.length === 0) {
+                    setLiked('no');
+                } else {
+                    setLiked('no');
+                    for (let i = 0; i <= results.length - 1; i++) {
+                        if (
+                            Number(results[i].idUsuario) === Number(idUsuario)
+                        ) {
+                            setLiked('yes');
+                        }
+                    }
+                }
             });
         },
         [, step]
     );
-
     return (
-        <div className="like-container">
-            <Button onClick={darLike}></Button>
-            <p className="likes-number"> {totalLikes}</p>
+        <div className='like-container'>
+            <Button onClick={darLike} liked={liked}></Button>
+            <p className='likes-number'> {totalLikes}</p>
         </div>
     );
 }
 export default Like;
+
+//Modificado Like, botonlike, button del like
+//empezamos a modificar resultados del search
