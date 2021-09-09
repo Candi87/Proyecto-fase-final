@@ -6,7 +6,7 @@ function ResetUsuarioPass() {
     const history = useHistory();
 
     const [recoverCode, setRecoverCode] = useState('');
-    const [newPassword, setNewPasswor] = useState('');
+    const [newPassword, setNewPasswor] = useState(0);
     const [repeatPassword, setRepeatPassWord] = useState('');
 
     const [error, setError] = useState('');
@@ -14,16 +14,17 @@ function ResetUsuarioPass() {
     function onSubmitResetUsuarioPass(event) {
         event.preventDefault();
         const error = validateResetUsuariosPass(recoverCode);
-        if (error) {
+        if (!error) {
             setError(error);
-            return;
         }
         async function resetUsuarioPassConfirm() {
             const response = await fetch(
                 'http://localhost:4000/usuarios/password/reset',
                 {
                     method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                     body: JSON.stringify({
                         recoverCode,
                         newPassword,
@@ -51,42 +52,57 @@ function ResetUsuarioPass() {
             <div className="main_page_access">
                 <div className="main_page_access_titles">
                     <h1 className="title_1">Actualiza la contraseña aquí</h1>
+                    <p className="reset-text">
+                        Hemos enviado a tú email un código de recuperación.
+                    </p>
                 </div>
-                <form onSubmit={onSubmitResetUsuarioPass}>
-                    <label>
-                        <input
-                            value={recoverCode}
-                            onChange={(event) =>
-                                setRecoverCode(event.target.value)
-                            }
-                            type="password"
-                            placeholder="Código de recuperación"
-                        ></input>
-                    </label>
-                    <label>
-                        <input
-                            value={newPassword}
-                            onChange={(event) =>
-                                setNewPasswor(event.target.value)
-                            }
-                            type="password"
-                            placeholder="Introduce la contraseña nueva"
-                        ></input>
-                    </label>
-                    <label>
-                        <input
-                            value={repeatPassword}
-                            onChange={(event) =>
-                                setRepeatPassWord(event.target.value)
-                            }
-                            type="password"
-                            placeholder="Repite la nueva contraseña"
-                        ></input>
+                <div className="register-form">
+                    <form
+                        className="loginform"
+                        onSubmit={onSubmitResetUsuarioPass}
+                    >
+                        <label>
+                            <input
+                                className="input"
+                                value={recoverCode}
+                                onChange={(event) =>
+                                    setRecoverCode(event.target.value)
+                                }
+                                type="password"
+                                placeholder="Código de recuperación"
+                            ></input>
+                        </label>
+                        <label>
+                            <input
+                                className="input"
+                                value={newPassword}
+                                onChange={(event) =>
+                                    setNewPasswor(event.target.value)
+                                }
+                                type="password"
+                                placeholder="Introduce la contraseña nueva"
+                            ></input>
+                        </label>
+                        <label>
+                            <input
+                                className="input"
+                                value={repeatPassword}
+                                onChange={(event) =>
+                                    setRepeatPassWord(event.target.value)
+                                }
+                                type="password"
+                                placeholder="Repite la nueva contraseña"
+                            ></input>
 
-                        <button type="submit">Actualizar</button>
-                        {error && <div className="error-label">{error} </div>}
-                    </label>
-                </form>
+                            <button className="button-forms" type="submit">
+                                Actualizar
+                            </button>
+                            {error && (
+                                <div className="error-label">{error} </div>
+                            )}
+                        </label>
+                    </form>
+                </div>
             </div>
         </div>
     );

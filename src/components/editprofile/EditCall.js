@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { ImWarning } from 'react-icons/im';
 import './modaleditprofile.css';
@@ -12,23 +12,25 @@ function EditCall() {
     const tokenInfo = sessionStorage.getItem('token');
     const [userInfo, setUserInfo] = useState();
 
-    // Solicitud GET USERINFO
-    if (!userInfo) {
-        async function getUserInfo() {
-            try {
-                const response = await axios({
+    useEffect(() => {
+        const getUserInfo = async () => {
+            const response = await fetch(
+                `http://localhost:4000/usuarios/${idUsuario}`,
+                {
                     method: 'GET',
-                    url: `http://localhost:4000/usuarios/${idUsuario}`,
                     headers: {
                         authorization: tokenInfo,
                         'Content-Type': 'application/json',
                     },
-                });
-                setUserInfo(response.data.informacion);
-            } catch (error) {}
-        }
+                }
+            );
+            const data = await response.json();
+            console.log(data);
+            setUserInfo(data.informacion);
+        };
         getUserInfo();
-    }
+    }, [idUsuario]);
+
     console.log('caca', userInfo);
 
     const [error, setError] = useState();
@@ -116,20 +118,7 @@ function EditCall() {
             setError(error);
         }
     }
-    function onSubmitChanges() {
-        const error = validateChanges(
-            nombre,
-            newName,
-            nickname,
-            newNickname,
-            email,
-            newEmail
-        );
-        if (error) {
-            setError(error);
-            return;
-        }
-    }
+
     return (
         <div className="btn-group">
             <div className="modal-container-profile">
@@ -147,7 +136,7 @@ function EditCall() {
                             ></img>
 
                             <p className="username-modal-edit">
-                                {nombre === newName ? userInfo.name : newName}
+                                {userInfo.name}
                             </p>
                         </div>
                     )}
@@ -158,7 +147,7 @@ function EditCall() {
                     className="open-modal-editCall"
                     data-open="changename"
                 >
-                    Cambiar nombre
+                    Cambiar Nombre
                 </button>
                 <button
                     type="button"
@@ -173,14 +162,14 @@ function EditCall() {
                     className="open-modal-editCall"
                     data-open="changeemail"
                 >
-                    Cambiar email
+                    Cambiar Email
                 </button>
                 <button
                     type="button"
                     className="open-modal-editCall"
                     data-open="changepassword"
                 >
-                    Cambiar contraseña
+                    Cambiar Contraseña
                 </button>
             </div>
 
@@ -197,15 +186,31 @@ function EditCall() {
                         </button>
                     </header>
                     <section className="modal-content">
+                        {userInfo && (
+                            <div>
+                                <img
+                                    className="trendings-profile-options"
+                                    alt="trendings"
+                                    src={
+                                        userInfo.fotoperfil === null
+                                            ? imagennoperfil
+                                            : `http://localhost:4000/uploads/${userInfo.fotoperfil}`
+                                    }
+                                ></img>
+
+                                <p className="username-modal-edit">
+                                    {userInfo.name}
+                                </p>
+                            </div>
+                        )}
                         <p className="instructions">
-                            Para cambiar el Email deberás introducir el nuevo
-                            Email en el siguiente formulario
+                            Para cambiar el Email solamente tendras que
+                            escribirlo en el siguiente espacio, y hacer click en
+                            el botón de confirmar cambios
                         </p>
-                        <form
-                            className="editprofile_form"
-                            onSubmit={onSubmitChanges}
-                        >
+                        <form className="editprofile_form">
                             <label className="change-container" for="email">
+                                Escribe aqui el nuevo Email
                                 <input
                                     type="email"
                                     onChange={(event) =>
@@ -215,23 +220,7 @@ function EditCall() {
                                     className="change"
                                 />
                             </label>
-                            <label className="change-container" for="username">
-                                Confirma el Email
-                                <input
-                                    type="text"
-                                    className="change"
-                                    onChange={(event) =>
-                                        setNewEmail(event.target.value)
-                                    }
-                                    placeholder="Introduce tu nuevo nombre"
-                                />
-                            </label>
-                            {error && (
-                                <div className="uploadimage_error_label">
-                                    <ImWarning />
-                                    {error}
-                                </div>
-                            )}
+
                             <input
                                 className="upload-changes"
                                 type="submit"
@@ -254,17 +243,27 @@ function EditCall() {
                             ✕
                         </button>
                     </header>
+
                     <section className="modal-content">
+                        {userInfo && (
+                            <img
+                                className="trendings-profile-options"
+                                alt="trendings"
+                                src={
+                                    userInfo.fotoperfil === null
+                                        ? imagennoperfil
+                                        : `http://localhost:4000/uploads/${userInfo.fotoperfil}`
+                                }
+                            ></img>
+                        )}
                         <p className="instructions">
-                            Para cambiar el nombre deberás introducir el nuevo
-                            nombre en el siguiente formulario
+                            Para cambiar el Nombre solamente tendras que
+                            escribirlo en el siguiente espacio, y hacer click en
+                            el botón de confirmar cambios
                         </p>
-                        <form
-                            className="editprofile_form"
-                            onSubmit={onSubmitChanges}
-                        >
+                        <form className="editprofile_form">
                             <label className="change-container" for="username">
-                                Nombre
+                                Escribe aqui el nuevo Nombre
                                 <input
                                     type="text"
                                     className="change"
@@ -274,24 +273,7 @@ function EditCall() {
                                     placeholder="Introduce tu nuevo nombre"
                                 />
                             </label>
-                            <label className="change-container" for="username">
-                                Confirma el Nombre
-                                <input
-                                    type="text"
-                                    className="change"
-                                    onChange={(event) =>
-                                        setNewName(event.target.value)
-                                    }
-                                    placeholder="Introduce tu nuevo nombre"
-                                />
-                            </label>
-                            <p>{error}</p>
-                            {error && (
-                                <div className="uploadimage_error_label">
-                                    <ImWarning />
-                                    {error}
-                                </div>
-                            )}
+
                             <input
                                 className="upload-changes"
                                 type="submit"
@@ -316,16 +298,25 @@ function EditCall() {
                         </button>
                     </header>
                     <section className="modal-content">
+                        {userInfo && (
+                            <img
+                                className="trendings-profile-options"
+                                alt="trendings"
+                                src={
+                                    userInfo.fotoperfil === null
+                                        ? imagennoperfil
+                                        : `http://localhost:4000/uploads/${userInfo.fotoperfil}`
+                                }
+                            ></img>
+                        )}
                         <p className="instructions">
-                            Para cambiar el Nickname deberás introducir el nuevo
-                            Nickname en el siguiente formulario
+                            Para cambiar el Nickname solamente tendras que
+                            escribirlo en el siguiente espacio, y hacer click en
+                            el botón de confirmar cambios
                         </p>
-                        <form
-                            className="editprofile_form"
-                            onSubmit={onSubmitChanges}
-                        >
+                        <form className="editprofile_form">
                             <label className="change-container" for="nickname">
-                                Nickname
+                                Escribe aqui el nuevo Nickname
                                 <input
                                     type="text"
                                     className="change"
@@ -335,23 +326,7 @@ function EditCall() {
                                     placeholder="Introduce tu nuevo nombre"
                                 />
                             </label>
-                            <label className="change-container" for="username">
-                                Confirma el Nickname
-                                <input
-                                    type="text"
-                                    className="change"
-                                    onChange={(event) =>
-                                        setNewNickName(event.target.value)
-                                    }
-                                    placeholder="Confirma tu nuevo Nickname"
-                                />
-                            </label>
-                            {error && (
-                                <div className="uploadimage_error_label">
-                                    <ImWarning />
-                                    {error}
-                                </div>
-                            )}
+
                             <input
                                 className="upload-changes"
                                 type="submit"
@@ -375,15 +350,22 @@ function EditCall() {
                         </button>
                     </header>
                     <section className="modal-content">
+                        {userInfo && (
+                            <img
+                                className="trendings-profile-options"
+                                alt="trendings"
+                                src={
+                                    userInfo.fotoperfil === null
+                                        ? imagennoperfil
+                                        : `http://localhost:4000/uploads/${userInfo.fotoperfil}`
+                                }
+                            ></img>
+                        )}
                         <p className="instructions">
                             Para cambiar la contraseña, introduce la antigua
-                            contraseña y despues la nueva dos veces para
-                            confirmar el cambio
+                            contraseña y despues la nueva.
                         </p>
-                        <form
-                            className="editprofile_form"
-                            onSubmit={onSubmitChanges}
-                        >
+                        <form className="editprofile_form">
                             <label className="change-container" for="email">
                                 Contraseña actual
                                 <input
@@ -426,18 +408,3 @@ function EditCall() {
     );
 }
 export default EditCall;
-function validateChanges(
-    nombre,
-    newName,
-    nickname,
-    newNickname,
-    email,
-    newEmail
-) {
-    const isValidName = nombre === newName;
-    if (!isValidName) return 'Los Nombres no Coinciden';
-    const isValidNickname = nickname === newNickname;
-    if (!isValidNickname) return 'Los Nicknames no Coinciden';
-    const isValidEmail = email === newEmail;
-    if (!isValidEmail) return 'Los Emails no Coinciden';
-}
