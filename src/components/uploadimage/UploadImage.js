@@ -147,7 +147,7 @@ const UploadImage = ({ handleClose }) => {
                     className="uploadimage_button_send"
                     type="submit"
                     value="Subir"
-                    onChange={uploadFile}
+                    onClick={uploadFile}
                 />
             </div>
         </form>

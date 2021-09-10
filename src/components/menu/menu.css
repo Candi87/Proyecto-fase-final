@@ -10,6 +10,15 @@
     font-size: 2rem;
     background-color: none;
 }
+.menu-close {
+    margin-left: 2rem;
+    font-size: 2rem;
+    background-color: none;
+    margin-top: 30px;
+}
+.icono-cerrar {
+    margin-top: 25px;
+}
 
 .nav-menu {
     background-color: black;
@@ -86,5 +95,26 @@ body {
 .btn-letter2 {
     color: white;
     font-size: 16px;
-    /* padding */
+    margin-top: 0px;
+}
+.menu-options {
+    text-decoration: none;
+    color: #f9f9f9;
+    font-size: 18px;
+    width: 95%;
+    height: 95%;
+    align-items: center;
+    display: flex;
+    padding: 0 16px;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-top: 70px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8x 16px;
+    list-style: none;
+}
+.list:hover {
+    background-color: #1a83ff;
 }

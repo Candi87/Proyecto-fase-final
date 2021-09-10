@@ -3,18 +3,20 @@ import React from 'react';
 import { HiOutlineMail } from 'react-icons/hi';
 import { AiOutlineFire } from 'react-icons/ai';
 import { BsSearch } from 'react-icons/bs';
+import { BiLogIn } from 'react-icons/bi';
+import { FaRegRegistered } from 'react-icons/fa';
 
 export const SidebarData = [
     {
         title: 'Login',
         path: '/login',
-        icon: <BsSearch />,
+        icon: <BiLogIn />,
         cName: 'nav-text',
     },
     {
         title: 'Registro',
         path: '/register',
-        icon: <BsSearch />,
+        icon: <FaRegRegistered />,
         cName: 'nav-text',
     },
     {

@@ -13,6 +13,7 @@ import HelperMenu from '../helperMenu/HelperMenu';
 function Menu() {
     const [sidebar, setSidebar] = useState(false);
     const token = sessionStorage.getItem('token');
+    const idUsuario = sessionStorage.getItem('idusuario');
     const showSidebar = () => setSidebar(!sidebar);
     if (token) {
         return (
@@ -40,16 +41,34 @@ function Menu() {
                                 <p className="btn-letter2">CERRAR MENÚ</p>
                             </Link>
                         </li>
-                        {SidebarDataLogged.map((item, index) => {
-                            return (
-                                <li key={index} className={item.cName}>
-                                    <Link to={item.path}>
-                                        {item.icon}
-                                        <span>{item.title}</span>
-                                    </Link>
-                                </li>
-                            );
-                        })}
+                        <li className="list">
+                            <a href={`/perfil/${idUsuario}`}>
+                                <p className="menu-options">Perfil</p>
+                            </a>
+                        </li>
+                        <li className="list">
+                            <a href={`/search`}>
+                                <p className="menu-options">Buscar</p>
+                            </a>
+                        </li>
+
+                        <li className="list">
+                            <a href={`/tendencias`}>
+                                <p className="menu-options">Tendencias</p>
+                            </a>
+                        </li>
+
+                        <li className="list">
+                            <a href={`/Contacto`}>
+                                <p className="menu-options">Contacto</p>
+                            </a>
+                        </li>
+
+                        <li className="list">
+                            <a href={`/login`}>
+                                <p className="menu-options">Desconectar</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </IconContext.Provider>
@@ -77,6 +96,7 @@ function Menu() {
                                 />
                             </Link>
                         </li>
+
                         {SidebarData.map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>

@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-import { ImWarning } from 'react-icons/im';
 import './modaleditprofile.css';
 import './editprofile.css';
 import imagennoperfil from '../../assets/imagennoperfil.png';
@@ -31,17 +30,15 @@ function EditCall() {
         getUserInfo();
     }, [idUsuario]);
 
-    console.log('caca', userInfo);
-
     const [error, setError] = useState();
-    let [nombre, setNombre] = useState();
-    const [newName, setNewName] = useState();
+    const [nombre, setNombre] = useState();
+
     const [email, setEmail] = useState();
-    const [newEmail, setNewEmail] = useState();
+
     const [nickname, setNickName] = useState();
-    const [newNickname, setNewNickName] = useState();
-    const [oldPassword, setOldPassword] = useState();
-    const [newPassword, setNewPassword] = useState();
+
+    const [oldPassword, setOldPassword] = useState(0);
+    const [newPassword, setNewPassword] = useState(0);
 
     async function editName(event) {
         try {
@@ -56,7 +53,6 @@ function EditCall() {
                     nombre: nombre,
                 },
             });
-            setNewName();
         } catch (error) {
             setError(error);
             console.log(error);
@@ -100,23 +96,28 @@ function EditCall() {
 
     async function editPassword(event) {
         event.preventDefault();
-        try {
-            const response = await axios({
-                method: 'PUT',
-                url: `http://localhost:4000/usuarios/${idUsuario}/password`,
-                headers: {
-                    authorization: tokenInfo,
-                    'Content-Type': 'application/json',
-                },
-                data: {
-                    oldPassword: oldPassword,
-                    newPassword: newPassword,
-                },
-            });
-            const data = await response.json();
-        } catch (error) {
+        const error = validatePassword(oldPassword, newPassword);
+
+        if (error) {
             setError(error);
+        } else {
+            setError('');
         }
+
+        const response = await axios({
+            method: 'PUT',
+            url: `http://localhost:4000/usuarios/${idUsuario}/password`,
+            headers: {
+                authorization: tokenInfo,
+                'Content-Type': 'application/json',
+            },
+            data: {
+                oldPassword: oldPassword,
+                newPassword: newPassword,
+            },
+        });
+
+        setError(error);
     }
 
     return (
@@ -197,10 +198,6 @@ function EditCall() {
                                             : `http://localhost:4000/uploads/${userInfo.fotoperfil}`
                                     }
                                 ></img>
-
-                                <p className="username-modal-edit">
-                                    {userInfo.name}
-                                </p>
                             </div>
                         )}
                         <p className="instructions">
@@ -340,7 +337,7 @@ function EditCall() {
             <div className="modal" id="changepassword">
                 <div className="modal-dialog">
                     <header className="modal-header">
-                        Cambiar password
+                        Cambiar Contraseña
                         <button
                             className="close-modal"
                             aria-label="close modal"
@@ -363,12 +360,16 @@ function EditCall() {
                         )}
                         <p className="instructions">
                             Para cambiar la contraseña, introduce la antigua
-                            contraseña y despues la nueva.
+                            contraseña y despues la nueva (min 6 caracteres).
                         </p>
-                        <form className="editprofile_form">
-                            <label className="change-container" for="email">
+                        <form className="editprofile_form_password">
+                            <label
+                                className="change-container-password"
+                                for="password"
+                            >
                                 Contraseña actual
                                 <input
+                                    pattern="[A-Za-z0-9!?-]{6,12}"
                                     type="password"
                                     onChange={(event) =>
                                         setOldPassword(event.target.value)
@@ -377,9 +378,13 @@ function EditCall() {
                                     className="change"
                                 />
                             </label>
-                            <label className="change-container" for="username">
+                            <label
+                                className="change-container-password"
+                                for="password"
+                            >
                                 Nueva contraseña
                                 <input
+                                    pattern="[A-Za-z0-9!?-]{6,12}"
                                     type="password"
                                     onChange={(event) =>
                                         setNewPassword(event.target.value)
@@ -388,14 +393,26 @@ function EditCall() {
                                     className="change"
                                 />
                             </label>
-                            {error && (
-                                <div className="uploadimage_error_label">
-                                    <ImWarning />
-                                    {error}
-                                </div>
-                            )}
+                            <label
+                                className="change-container-password"
+                                for="password"
+                            >
+                                Repite la nueva contraseña
+                                <input
+                                    pattern="[A-Za-z0-9!?-]{6,12}"
+                                    type="password"
+                                    onChange={(event) =>
+                                        setNewPassword(event.target.value)
+                                    }
+                                    placeholder="Repite la nueva contraseña"
+                                    className="change"
+                                />
+                            </label>
+
+                            <p className="message-password">{error}</p>
+
                             <input
-                                className="upload-changes"
+                                className="upload-changes-password"
                                 type="submit"
                                 value="Confirmar Cambios"
                                 onClick={editPassword}
@@ -408,3 +425,19 @@ function EditCall() {
     );
 }
 export default EditCall;
+function validatePassword(oldPassword, newPassword) {
+    const isValidPassword = newPassword === newPassword;
+    if (!oldPassword) {
+        return 'No puedes dejar ningún formulario vacio';
+    }
+    if (!newPassword) {
+        return 'No puedes dejar ningún formulario vacio';
+    }
+
+    if (!isValidPassword) {
+        return 'Las contraseñas deben coincidir';
+    }
+    if (isValidPassword) {
+        return 'Se ha actualizado su contraseña';
+    }
+}

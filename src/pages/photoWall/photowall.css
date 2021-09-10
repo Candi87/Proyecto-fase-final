@@ -18,15 +18,18 @@
     height: 100vh;
 }
 .comment-button {
-    border: none;
+    border: 2px black;
     cursor: pointer;
     width: 20%;
+}
+.comment-button svg {
+    width: 30px;
+    height: 30px;
 }
 .comment-button:hover {
     border: none;
     cursor: pointer;
     width: 20%;
-    background-color: green;
 }
 
 .imagesWall_parent {

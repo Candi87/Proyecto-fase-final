@@ -62,7 +62,7 @@ function Rscamino() {
                             <ResetUsuarioPass />
                         </Route>
 
-                        <Route exact path={'/tendencias'}>
+                        <Route exact path={'/tendencias/'}>
                             <Trendings />
                         </Route>
                         <Route exact path={'/search'}>

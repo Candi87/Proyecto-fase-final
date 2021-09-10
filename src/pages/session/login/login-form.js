@@ -82,7 +82,7 @@ function Login() {
                         </label>
                         <div>
                             <button type="submit" className="button-forms">
-                                Login
+                                Entrar
                             </button>
                             <div className="linkLogin">
                                 <Link to="register" className="links">
