@@ -6,6 +6,11 @@ import { SidebarData } from './sidebardata';
 import { SidebarDataLogged } from './sidebardatalogged';
 import './menu.css';
 
+import { CgProfile } from 'react-icons/cg';
+import { RiLogoutBoxLine } from 'react-icons/ri';
+import { HiOutlineMail } from 'react-icons/hi';
+import { BsSearch } from 'react-icons/bs';
+import { AiOutlineFire } from 'react-icons/ai';
 import { RiMenuFoldFill } from 'react-icons/ri';
 import { RiMenuUnfoldFill } from 'react-icons/ri';
 import { IconContext } from 'react-icons';
@@ -41,34 +46,44 @@ function Menu() {
                                 <p className="btn-letter2">CERRAR MENÚ</p>
                             </Link>
                         </li>
-                        <li className="list">
-                            <a href={`/perfil/${idUsuario}`}>
-                                <p className="menu-options">Perfil</p>
-                            </a>
-                        </li>
-                        <li className="list">
-                            <a href={`/search`}>
-                                <p className="menu-options">Buscar</p>
-                            </a>
-                        </li>
+                        <div className="options-container">
+                            <li className="list">
+                                <a
+                                    href={`/perfil/${idUsuario}`}
+                                    className="nav-text2"
+                                >
+                                    <CgProfile className="menu-icons" />
+                                    <span> Perfil </span>
+                                </a>
+                            </li>
+                            <li className="list">
+                                <a href={`/search`} className="nav-text2">
+                                    <BsSearch className="menu-icons" />{' '}
+                                    <span>Buscar</span>
+                                </a>
+                            </li>
 
-                        <li className="list">
-                            <a href={`/tendencias`}>
-                                <p className="menu-options">Tendencias</p>
-                            </a>
-                        </li>
+                            <li className="list">
+                                <a href={`/tendencias`} className="nav-text2">
+                                    <AiOutlineFire className="menu-icons" />
+                                    <span>Tendencias</span>
+                                </a>
+                            </li>
 
-                        <li className="list">
-                            <a href={`/Contacto`}>
-                                <p className="menu-options">Contacto</p>
-                            </a>
-                        </li>
+                            <li className="list">
+                                <a href={`/Contacto`} className="nav-text2">
+                                    <HiOutlineMail className="menu-icons" />
+                                    <span>Contacto</span>
+                                </a>
+                            </li>
 
-                        <li className="list">
-                            <a href={`/login`}>
-                                <p className="menu-options">Desconectar</p>
-                            </a>
-                        </li>
+                            <li className="list">
+                                <a href={`/login`} className="nav-text2">
+                                    <RiLogoutBoxLine className="menu-icons" />
+                                    <span>Desconectar</span>
+                                </a>
+                            </li>
+                        </div>
                     </ul>
                 </nav>
             </IconContext.Provider>
@@ -82,6 +97,9 @@ function Menu() {
                             className="icono-opciones"
                             onClick={showSidebar}
                         />
+                        <p onClick={showSidebar} className="btn-letter">
+                            MENÚ
+                        </p>
                     </Link>
 
                     <h1>A GUÍA DO CAMIÑO</h1>
@@ -90,10 +108,8 @@ function Menu() {
                     <ul className="nav-menu-items" onClick={showSidebar}>
                         <li className="navbar-toggle">
                             <Link to="#" className="menu-bars">
-                                <RiMenuFoldFill
-                                    onClick={showSidebar}
-                                    className="icono-cerrar"
-                                />
+                                <RiMenuFoldFill className="icono-cerrar" />
+                                <p className="btn-letter2">CERRAR MENÚ</p>
                             </Link>
                         </li>
 

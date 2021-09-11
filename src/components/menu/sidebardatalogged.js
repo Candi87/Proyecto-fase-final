@@ -1,11 +1,5 @@
 // import React from 'react';
 
-// import { CgProfile } from 'react-icons/cg';
-// import { HiOutlineMail } from 'react-icons/hi';
-// import { RiLogoutBoxLine } from 'react-icons/ri';
-// import { AiOutlineFire } from 'react-icons/ai';
-// import { BsSearch } from 'react-icons/bs';
-
 // export const SidebarDataLogged = [
 // {
 //     title: 'Perfil',

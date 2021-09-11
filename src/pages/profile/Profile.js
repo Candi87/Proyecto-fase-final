@@ -112,7 +112,7 @@ function Profile() {
                     </div>
                 </>
             ) : (
-                <div>Cargando...</div>
+                <div class="preloader"></div>
             )}
         </div>
     );

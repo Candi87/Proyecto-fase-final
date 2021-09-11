@@ -79,7 +79,9 @@
 span {
     margin-left: 16px;
 }
-
+.menu-icons {
+    margin-left: 15px;
+}
 h1 {
     color: #f9f9f9;
     padding-left: 200px;
@@ -97,7 +99,20 @@ body {
     font-size: 16px;
     margin-top: 0px;
 }
-.menu-options {
+.nav-text2 {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8x 16px;
+    list-style: none;
+    height: 100px;
+}
+.nav-text2 {
+    color: #f9f9f9;
+    font-size: 18px;
+}
+
+.nav-text2 a {
     text-decoration: none;
     color: #f9f9f9;
     font-size: 18px;
@@ -108,13 +123,19 @@ body {
     padding: 0 16px;
     border-radius: 4px;
     margin-left: 5px;
+
     margin-top: 70px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 8px 0px 8x 16px;
-    list-style: none;
 }
-.list:hover {
+.list a:hover {
     background-color: #1a83ff;
+    width: 95%;
+
+    border-radius: 4px;
+    text-decoration: none;
+}
+.list {
+    margin-top: 20px;
+}
+.options-container {
+    margin-top: 35px;
 }
