@@ -163,18 +163,17 @@ function PhotoWall({ arrayFotos }) {
                         href="javascript: history.go(-1)"
                         className="menuhidden_button"
                     >
-                        <RiArrowGoBackLine />
-                        <p>Atrás</p>
+                        <RiArrowGoBackLine className="navbar-buttons-notlo" />
+                        <p className="navbar-buttons-notlo">Atrás</p>
                     </a>
-
                     <a href={'/search'} className="menuhidden_button">
-                        <BsSearch />
-                        Buscar
+                        <BsSearch className="navbar-buttons-notlo" />
+                        <p className="navbar-buttons-notlo">Buscar</p>
                     </a>
 
                     <a href={'/tendencias'} className="menuhidden_button">
-                        <AiOutlineFire />
-                        Tendencias
+                        <AiOutlineFire className="navbar-buttons-notlo" />
+                        <p className="navbar-buttons-notlo">Tendencias</p>
                     </a>
                 </div>
             )}
@@ -243,7 +242,6 @@ function PhotoWall({ arrayFotos }) {
                                 disabled
                                 className="textarea-comments"
                                 type="text"
-                                placeholder="Aquí podrás comentar las fotos que más te gusten"
                                 value={comentario}
                                 onChange={(event) =>
                                     setComments(event.target.value)
