@@ -77,7 +77,7 @@
     justify-content: start;
     align-items: center;
 }
-span {
+.links-menu {
     margin-left: 16px;
 }
 .menu-icons {

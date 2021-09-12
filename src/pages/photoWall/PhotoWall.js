@@ -120,20 +120,6 @@ function PhotoWall({ arrayFotos }) {
             {token !== null ? (
                 <div className="menuhidden menuhidden-logged">
                     <a
-                        href={`/photos/${previous.id}`}
-                        className="menuhidden_button"
-                    >
-                        <IoIosArrowDropleftCircle className="photoleft" />
-                    </a>
-
-                    <a
-                        href="javascript: history.go(-1)"
-                        className="menuhidden_button"
-                    >
-                        <RiArrowGoBackLine className="navbar-buttons" />
-                        <p className="navbar-buttons">Atrás</p>
-                    </a>
-                    <a
                         href={`/perfil/${idUsuario}`}
                         className="menuhidden_button"
                     >
@@ -149,12 +135,6 @@ function PhotoWall({ arrayFotos }) {
                     <a href={'/tendencias'} className="menuhidden_button">
                         <AiOutlineFire className="navbar-buttons" />
                         <p className="navbar-buttons">Tendencias</p>
-                    </a>
-                    <a
-                        href={`/photos/${next.id}`}
-                        className="menuhidden_button"
-                    >
-                        <IoIosArrowDroprightCircle className="photoright" />
                     </a>
                 </div>
             ) : (
@@ -178,7 +158,22 @@ function PhotoWall({ arrayFotos }) {
                 </div>
             )}
             <div className="grid_photowall">
-                <Image url={image.url} />
+                <div className="photandbuts">
+                    <a
+                        href={`/photos/${previous.id}`}
+                        className="menuhidden_button"
+                    >
+                        <IoIosArrowDropleftCircle className="photoleft" />
+                    </a>
+
+                    <Image url={image.url} />
+                    <a
+                        href={`/photos/${next.id}`}
+                        className="menuhidden_button"
+                    >
+                        <IoIosArrowDroprightCircle className="photoright" />
+                    </a>
+                </div>
                 <div className="asidephoto">
                     <div className="photoinfo">
                         <a

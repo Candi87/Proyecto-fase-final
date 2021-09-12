@@ -58,34 +58,40 @@ function Menu() {
                                     className="nav-text2"
                                 >
                                     <CgProfile className="menu-icons" />
-                                    <span> Perfil </span>
+                                    <span className="links-menu"> Perfil </span>
                                 </a>
                             </li>
                             <li className="list">
                                 <a href={`/search`} className="nav-text2">
                                     <BsSearch className="menu-icons" />{' '}
-                                    <span>Buscar</span>
+                                    <span className="links-menu">Buscar</span>
                                 </a>
                             </li>
 
                             <li className="list">
                                 <a href={`/tendencias`} className="nav-text2">
                                     <AiOutlineFire className="menu-icons" />
-                                    <span>Tendencias</span>
+                                    <span className="links-menu">
+                                        Tendencias
+                                    </span>
                                 </a>
                             </li>
 
                             <li className="list">
                                 <a href={`/Contacto`} className="nav-text2">
                                     <HiOutlineMail className="menu-icons" />
-                                    <span>Contacto</span>
+                                    <span className="links-menu">
+                                        Información General
+                                    </span>
                                 </a>
                             </li>
 
                             <li className="list">
                                 <a href={`/login`} className="nav-text2">
                                     <RiLogoutBoxLine className="menu-icons" />
-                                    <span>Desconectar</span>
+                                    <span className="links-menu">
+                                        Desconectar
+                                    </span>
                                 </a>
                             </li>
                         </div>
