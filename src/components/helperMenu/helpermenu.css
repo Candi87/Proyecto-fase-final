@@ -34,8 +34,7 @@ a {
 }
 
 .btn-group-options {
-    position: relative;
-    left: 950px;
+    padding-left: 850px;
 }
 
 .open-modal {

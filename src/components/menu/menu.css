@@ -1,6 +1,6 @@
 .navbar {
     background-color: black;
-    height: 100px;
+    height: 140px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -17,7 +17,8 @@
     margin-top: 30px;
 }
 .icono-cerrar {
-    margin-top: 25px;
+    position: relative;
+    top: 20px;
 }
 
 .nav-menu {
@@ -97,7 +98,8 @@ body {
 .btn-letter2 {
     color: white;
     font-size: 16px;
-    margin-top: 0px;
+    position: relative;
+    top: 15px;
 }
 .nav-text2 {
     display: flex;
@@ -106,8 +108,6 @@ body {
     padding: 8px 0px 8x 16px;
     list-style: none;
     height: 100px;
-}
-.nav-text2 {
     color: #f9f9f9;
     font-size: 18px;
 }

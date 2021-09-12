@@ -12,6 +12,7 @@ import Trendings from './pages/trendings/Trendings';
 import Search from './pages/search/Search';
 import PhotoWall from './pages/photoWall/PhotoWall';
 import Profile from './pages/profile/Profile';
+import SimpleTabs from './pages/about/about';
 
 // const Login = lazy(() => import('./pages/session/login/login-form'));
 // const RegisterForm = lazy(() =>
@@ -71,10 +72,14 @@ function Rscamino() {
                         <Route exact path={'/photos/:id'}>
                             <PhotoWall />
                         </Route>
+                        <Route exact path={'/contacto'}>
+                            <SimpleTabs />
+                        </Route>
 
                         <Route exact path={'/'}>
                             <Home />
                         </Route>
+
                         {/* </Suspense> */}
                     </Switch>
                 </div>

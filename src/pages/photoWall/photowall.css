@@ -2,12 +2,14 @@
     width: 100%;
 }
 .textarea-comments {
-    padding: 16px;
+    padding: 10px;
     text-align: left;
     font-size: 20px;
     border: none;
     resize: none;
     width: 100%;
+    height: 50px;
+    margin-left: 60px;
 }
 
 .textarea-comments:focus {
@@ -40,6 +42,7 @@
     flex-shrink: 10;
     flex-grow: 10;
     padding-top: 16px;
+    margin-left: 60px;
 }
 .imagesWall_comments_new {
     grid-area: 2 / 2 / 3 / 3;
@@ -52,7 +55,7 @@
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
-    margin: 30px 20px 10px 20px;
+    margin: 30px 100px 10px 100px;
     grid-row-gap: 0px;
 }
 .imagesWall img {
@@ -71,9 +74,7 @@
 .menuhidden-notlogged {
     justify-content: space-evenly;
 }
-.menuhidden-logged {
-    justify-content: space-between;
-}
+
 .singlecomment h1 {
     margin-top: 200px;
     vertical-align: center;
@@ -90,6 +91,7 @@
     background-color: #ffffff;
     padding: 16px 0px 16px 0px;
     border-bottom: 1px solid black;
+    margin-left: 60px;
 }
 .avatarinfo {
     display: flex;
@@ -114,8 +116,8 @@
     color: white;
 }
 .menuhidden svg {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     color: grey;
     vertical-align: center;
 }
@@ -132,4 +134,22 @@
     flex-direction: column;
     gap: 6px;
     color: grey;
+}
+.photoleft {
+    position: relative;
+    top: 400px;
+    left: 18px;
+}
+.photoright {
+    position: relative;
+    top: 400px;
+    left: 235px;
+}
+.menuhidden-logged {
+    justify-content: flex-start;
+}
+.navbar-buttons {
+    margin-left: 210px;
+    margin-right: 0px;
+    text-decoration: none;
 }

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { SidebarData } from './sidebardata';
-import { SidebarDataLogged } from './sidebardatalogged';
+
 import './menu.css';
 
 import { CgProfile } from 'react-icons/cg';
@@ -43,7 +43,12 @@ function Menu() {
                         <li className="navbar-toggle">
                             <Link to="#" className="menu-bars">
                                 <RiMenuFoldFill className="icono-cerrar" />
-                                <p className="btn-letter2">CERRAR MENÚ</p>
+                                <p
+                                    onClick={showSidebar}
+                                    className="btn-letter2"
+                                >
+                                    CERRAR MENÚ
+                                </p>
                             </Link>
                         </li>
                         <div className="options-container">

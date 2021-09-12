@@ -17,16 +17,16 @@ function Search() {
     return (
         <div>
             <Menu />
-            <div className='searchpage'>
+            <div className="searchpage">
                 <form onSubmit={none}>
                     <input
-                        type='text'
+                        type="text"
                         onChange={handleChange}
-                        placeholder='Buscar..'
+                        placeholder="Busca la imagen que quieras"
                         value={keyword}
                     />
                 </form>
-                <div className='showsearch-container'>
+                <div className="showsearch-container">
                     <ListOfResults keyword={keyword} />
                 </div>
             </div>

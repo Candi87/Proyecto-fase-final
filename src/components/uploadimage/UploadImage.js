@@ -31,7 +31,7 @@ const UploadImage = ({ handleClose }) => {
     };
 
     async function uploadFile(event) {
-        event.preventDefault();
+        // event.preventDefault();
         if (!crop) {
         } else {
             try {
@@ -147,7 +147,8 @@ const UploadImage = ({ handleClose }) => {
                     className="uploadimage_button_send"
                     type="submit"
                     value="Subir"
-                    onClick={uploadFile}
+                    onChange={uploadFile}
+                    data-close
                 />
             </div>
         </form>
